@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrados</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+         a {
+            text-decoration: none;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h2>Usuários Cadastrados:</h2>
+   <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>IMC (Índice de massa corporal)</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome | capitalize }}</td>
+                    <td>{{ '%.2f' | format(usuario.peso * 100 / (usuario.altura ** 2) * 100 | float) }}</td>
+                    <td>{{ usuario.situacao }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+   </table>
+    <h4><a href="{{ url_for('index') }}">Voltar a página de cadastro</a></h4>
+</body>
+</html>

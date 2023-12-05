@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de IMC</title>
+
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Cálculo de IMC - Índice de Massa Corporal</h1>
+    <form method="post" action="{{ url_for('calculate_bmi') }}">
+        <label for="patient_name">Nome do Paciente:</label>
+        <input type="text" name="patient_name" required><br>
+
+        <label for="full_address">Endereço Completo:</label>
+        <input type="text" name="full_address" required><br>
+
+        <label for="weight">Peso (kg):</label>
+        <input type="text" name="weight" required><br>
+
+        <label for="height">Altura (cm):</label>
+        <input type="text" name="height" required><br>
+
+        <button type="submit">Calcular IMC</button>
+    </form>
+
+     <div id="result">
+        <p>{{ result_text }}</p>
+    </div>
+
+    <!-- Adicionando um link para a rota '/users' -->
+    <h4><a href="{{ url_for('usuarios_cadastrados') }}">Ver Usuários Cadastrados</a></h4>
+
+</body>
+</html>
